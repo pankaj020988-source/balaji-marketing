@@ -1,7 +1,6 @@
 import streamlit as st
 from PIL import Image
 import io
-import os
 
 # ==========================================
 # 🌐 १. मुख्य पेज कॉन्फिगरेशन आणि थीम
@@ -93,12 +92,12 @@ with main_tab2:
         st.markdown('<div class="service-card"><div class="service-title">📄 डोमासिएल, उत्पन्न व जातीचे दाखले</div><div class="service-desc">तहसीलदार कचेरीचे अधिकृत रहिवासी दाखले, वार्षिक उत्पन्नाचे प्रमाणपत्र आणि डिजिटल जातीचे दाखले जलद सेवा.[cite: 1]</div></div>', unsafe_allow_html=True)
         st.markdown('<div class="service-card"><div class="service-title">💳 नवीन पॅन CARD / दुरुस्ती</div><div class="service-desc">नवीन पॅन कार्ड काढणे, हरवलेले पॅन कार्ड मिळवणे किंवा जुन्या पॅन कार्डमधील नाव, जन्मतारीख व फोटो दुरुस्ती.[cite: 1]</div></div>', unsafe_allow_html=True)
     with col_grid2:
-        st.markdown("<h4 style='color: #0056b3; border-bottom: 2px solid #d4af37; padding-bottom: 5px;'>🖨️ स्पेशल प्रिंटिंग, झेरॉक्स आणि ट्रॅव्हल बुकिंग</h4>", unsafe_allow_html=True)
+        st.markdown("<h4 style='color: #0056b3; border-bottom: 2px solid #d4af37; padding-bottom: 5px;'>🖨️ | स्पेशल प्रिंटिंग, झेरॉक्स आणि ट्रॅव्हल बुकिंग</h4>", unsafe_allow_html=True)
         st.markdown('<div class="service-card"><div class="service-title">💻 सर्व प्रकारचे ऑनलाईन जॉब फॉर्म्स</div><div class="service-desc">केंद्र व राज्य शासनाच्या सर्व मेगाभरती, पोलीस, आर्मी, रेल्वे व अर्ज १००% अचूक भरून मिळतील.[cite: 1]</div></div>', unsafe_allow_html=True)
         st.markdown('<div class="service-card"><div class="service-title">✈️ फ्लाईट बुकिंग केंद्र (Flight Tickets)</div><div class="service-desc">विमान प्रवासाचे तिकिट बुकिंग, हॉटेल्स आणि प्रवासाचे झटपट व खात्रीशीर आरक्षण सोल्यूशन्स.[cite: 1]</div></div>', unsafe_allow_html=True)
 
 # ------------------------------------------
-# 🖨️ टॅब ३: मोबाईल ऑटो प्रिंट पोर्टल (किंमत आणि कन्फर्मेशन फिक्स)
+# 🖨️ टॅब ३: मोबाईल ऑटो प्रिंट पोर्टल (नवीन प्राइज फिक्स)
 # ------------------------------------------
 with main_tab3:
     st.markdown('<div style="text-align: center; margin-bottom: 15px;"><h2 style="color: #002f6c; margin-bottom: 2px;">👑 श्री बालाजी सायबर पॉईंट 👑</h2><h4 style="color: #fd7e14; margin-top: 0;">स्मार्ट मोबाईल ऑटो प्रिंट सिस्टीम</h4></div>', unsafe_allow_html=True)
@@ -113,21 +112,20 @@ with main_tab3:
         # ३. फाईल अपलोड
         uploaded_print_files = st.file_uploader("📂 फाईल्स निवडा:", accept_multiple_files=True, key="auto_files")
         # ४. पेजेस
-        st.markdown("**⚙️ पेजेस सेटिंग (फक्त PDF साठी):**")
+        st.markdown("**⚙️ पेजेस送टिंग (फक्त PDF साठी):**")
         p_setting = st.radio("", ["सर्व पेजेस (All)", "ठराविक पेजेस"], horizontal=True, label_visibility="collapsed")
         total_pgs = st.number_input("🔢 एकूण किती पेजेस किंवा फोटो प्रिंट होणार आहेत?", min_value=1, value=1, step=1)
         
-        # ५. किंमत हिशोब (इथे आपण कडक फिक्स केले आहे)
-        rate = 10 if "कलर (Color)" in p_select else 2
+        # 💰 सुधारित किंमत हिशोब: कलर = २० रुपये, B&W = १० रुपये
+        rate = 20 if "कलर (Color)" in p_select else 10
         total_amt = total_pgs * rate
         
-        # ६. पेमेंट पद्धत
+        # ५. पेमेंट पद्धत
         pay_method = st.radio("💳 पेमेंटची पद्धत निवडा:", ["📱 ऑनलाईन (UPI/QR)", "💵 काउंटरवर रोख (Cash)"], horizontal=True, key="pay_method_box")
         
         st.markdown(f'<div style="background-color: #fff9db; padding: 15px; border-radius: 8px; text-align: center; border: 1px solid #ffe066; margin-top: 20px;"><h3 style="color: #f59f00; margin: 0;">💵 एकूण रक्कम: ₹{total_amt}</h3></div>', unsafe_allow_html=True)
         
         st.write("")
-        # 🎯 कन्फर्मेशन चेकबॉक्स (फरक दाखवण्यासाठी अनिवार्य)
         confirm_print = st.checkbox("✅ मी सर्व माहिती तपासली आहे, प्रिंट ऑर्डर निश्चित करा.")
         
         if st.button("🚀 प्रिंट ऑर्डर सबमिट करा", type="primary", use_container_width=True):
@@ -136,12 +134,11 @@ with main_tab3:
             elif not confirm_print:
                 st.warning("⚠️ कृपया वरील कन्फर्मेशन चेकबॉक्सवर टिक करा!")
             else:
-                # 💾 ऑर्डर फाईल डेटाबेसमध्ये राइट करणे जेणेकरून client.py वाचू शकेल
                 try:
                     with open("print_orders.txt", "a", encoding="utf-8") as f:
                         for uploaded_file in uploaded_print_files:
                             f.write(f"FILE:{uploaded_file.name}|PAGES:{total_pgs}|TYPE:{p_select}|PAY:{pay_method}|AMT:{total_amt}\n")
-                    st.success("✅ तुमची प्रिंट ऑर्डर यशस्वीरित्या बालाजी प्रिंट सर्व्हरकडे पाठवली आहे! हिशोब अचूक नोंदवला गेला.")
+                    st.success("✅ तुमची प्रिंट ऑर्डर यशस्वीरित्या बालाजी प्रिंट सर्व्हरकडे पाठवली आहे!")
                 except Exception as e:
                     st.error(f"त्रुटी: {e}")
                 
