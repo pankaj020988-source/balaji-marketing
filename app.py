@@ -35,6 +35,7 @@ st.markdown("""
 # मेमरी चालू ठेवणे
 if "owner_password" not in st.session_state: st.session_state.owner_password = "Balaji@123"
 
+# १५ फोटोंसाठी मेमरी स्टोरेज तयार करणे (३ विभाग x ५ फोटो)
 for i in range(1, 4):
     for j in range(1, 6):
         state_key = f"ad{i}_img_{j}"
@@ -42,7 +43,7 @@ for i in range(1, 4):
 
 if "ad1_main_text" not in st.session_state: st.session_state.ad1_main_text = "🔥 **नोकर भरती व शैक्षणिक विशेष:** सर्व प्रकारचे ऑनलाईन जॉब फॉर्म्स, रेल्वे, पोलीस भरती आणि शाळा-कॉलेजचे ऑनलाईन प्रवेश अर्ज अचूक भरून मिळतील."
 if "ad2_main_text" not in st.session_state: st.session_state.ad2_main_text = "📄 **हॉल तिकीट व प्रवेशपत्र अपडेट:** विविध चालू परीक्षांचे प्रवेशपत्र डाऊनलोड करून मिळतील."
-if "ad3_main_text" not in st.session_state: st.session_state.ad3_main_text = "✈️ **विशेष प्रिंटिंग आणि बुकिंग सेवा:** फ्लाईट तिकीट बुकिंग, कलर झेरॉक्स आणि स्कॅनिंग जलद सेवा."
+if "ad3_main_text" not in st.session_state: st.session_state.ad3_main_text = "✈️ **विशेष प्रिंटिंग आणि बुकिंग सेवा:** फ्लाईट तिकीट बुकिंग, color झेरॉक्स आणि स्कॅनिंग जलद सेवा."
 
 # ==========================================
 # 📢 २. मुख्य जुना रॉयल ब्लू बॅनर
@@ -63,12 +64,10 @@ main_tab1, main_tab2, main_tab3 = st.tabs([
 ])
 
 # ------------------------------------------
-# टॅब १: महाभरती व लाईव्ह ऑफर्स (सब-टॅब नाव बदलले)
+# टॅब १: महाभरती व लाईव्ह ऑफर्स
 # ------------------------------------------
 with main_tab1:
     st.markdown("### 📢 चालू घडामोडी आणि नवीन जाहिराती (फोटोवर क्लिक करून मोठे करा)")
-    
-    # 🎯 तुमच्या सूचनेनुसार इथे "🔥 नोकर भरती आणि शैक्षणिक (Ad 1)" असे कडक अपडेट केले आहे
     ad_tab1, ad_tab2, ad_tab3 = st.tabs(["🔥 नोकर भरती आणि शैक्षणिक (Ad 1)", "📄 हॉल तिकीट (Ad 2)", "✨ विशेष सेवा ऑफर्स (Ad 3)"])
 
     def display_advertisement_gallery(tab_index, main_text):
@@ -86,7 +85,7 @@ with main_tab1:
                     st.markdown('</div>', unsafe_allow_html=True)
                     img_buffer = io.BytesIO()
                     img_data.save(img_buffer, format="PNG")
-                    st.download_button(label=f"🔍 सेपरेट झूम ({img_idx})", data=img_buffer.getvalue(), file_name=f"balaji_ad_{tab_index}_{img_idx}.png", mime="image/png", key=f"dl_{tab_index}_{img_idx}", use_container_width=True)
+                    st.download_button(label=f"🔍 झूम ({img_idx})", data=img_buffer.getvalue(), file_name=f"balaji_ad_{tab_index}_{img_idx}.png", mime="image/png", key=f"dl_{tab_index}_{img_idx}", use_container_width=True)
                 else: st.write(f"ℹ️ पत्रक {img_idx} खाली")
         if not has_any_image: st.warning("📌 या विभागात सध्या कोणतेही अधिकृत पत्रक अपलोड केलेले नाही.")
 
@@ -116,18 +115,6 @@ with main_tab2:
             <div class="service-title">💳 नवीन पॅन CARD / दुरुस्ती</div>
             <div class="service-desc">नवीन पॅन कार्ड काढणे, हरवलेले पॅन कार्ड मिळवणे किंवा जुन्या पॅन कार्डमधील नाव, जन्मतारीख व फोटो दुरुस्ती.</div>
         </div>
-        <div class="service-card" style="border-left-color: #dc3545;">
-            <div class="service-title">🗳️ मतदार कार्ड आणि आधार लिंक</div>
-            <div class="service-desc">नवीन मतदार यादीत नाव नोंदवणे, मतदार कार्ड (Voter ID) डिजिटल करणे आणि आधार कार्ड लिंक करण्याची कामे.</div>
-        </div>
-        <div class="service-card" style="border-left-color: #17a2b8;">
-            <div class="service-title">📜 गॅझेट गॅरंटी सुविधा (नाव/धर्म बदलणे)</div>
-            <div class="service-desc">शासकीय राजपत्रात (Gazette) अधिकृत नाव बदलणे, विवाहांतर नाव बदलणे किंवा कायदेशीर धर्म बदलण्याची संपूर्ण प्रक्रिया.</div>
-        </div>
-        <div class="service-card" style="border-left-color: #6f42c1;">
-            <div class="service-title">👮 पोलीस व्हेरिफिकेशन (Police Verification)</div>
-            <div class="service-desc">नोकरी, चार चरित्र प्रमाणपत्र किंवा पासपोर्टसाठी लागणारे अधिकृत ऑनलाईन पोलीस व्हेरिफिकेशन अर्ज सुविधा.</div>
-        </div>
         """, unsafe_allow_html=True)
 
     with col_grid2:
@@ -140,18 +127,6 @@ with main_tab2:
         <div class="service-card" style="border-left-color: #007bff;">
             <div class="service-title">✈️ | फ्लाईट बुकिंग केंद्र (Flight Tickets)</div>
             <div class="service-desc">विमान प्रवासाचे तिकिट बुकिंग, हॉटेल्स आणि प्रवासाचे झटपट व खात्रीशीर आरक्षण सोल्यूशन्स.</div>
-        </div>
-        <div class="service-card" style="border-left-color: #ffc107;">
-            <div class="service-title">📐 A3 | हाय-क्वालिटी प्रिंटिंग सेवा</div>
-            <div class="service-desc">मोठ्या आकाराचे दस्तऐवज, नकाशा, अधिकृत पत्रके आणि विशेष दस्तऐवजांची हाय-क्वालिटी डिजिटल प्रिंटिंग सुविधा.</div>
-        </div>
-        <div class="service-card" style="border-left-color: #343a40;">
-            <div class="service-title">🎨 कलर झेरॉक्स (Xerox) व स्कॅनिंग</div>
-            <div class="service-desc">कागदपत्रांची कडक लेझर कलर झेरॉक्स आणि स्कॅनिंग सेवा.</div>
-        </div>
-        <div class="service-card" style="border-left-color: #6c757d;">
-            <div class="service-title">🔒 A3 आणि A4 कडक लॅमिनेशन</div>
-            <div class="service-desc">तुमची महत्त्वाची प्रमाणपत्रे सुरक्षित ठेवण्यासाठी कडक वॉटरप्रूफ लॅमिनेशन.</div>
         </div>
         """, unsafe_allow_html=True)
 
@@ -180,7 +155,9 @@ st.write("")
 st.markdown("""<div style='background-color: #002f6c; color: white; padding: 15px; border-radius: 8px; text-align: center; font-size: 16px; font-weight: bold; border: 2px solid #d4af37;'>📍 पत्ताः बालाजी कॉम्प्लेक्स, माणगाव, रायगड, Maharashtra | 📞 संपर्क: 8007365051 | 🟢 व्हॉट्सॲप: 8806789013</div>""", unsafe_allow_html=True)
 st.write("---")
 
-# जाहिरात सेटिंग्ज
+# ==========================================
+# ⚙️ ४. सायबर ओनर CONTROL PANEL (५-५ स्वतंत्र फोटो अपलोड)
+# ==========================================
 col_foot1, col_foot2 = st.columns([5, 1])
 with col_foot1: st.markdown("<p style='font-size: 13px; color: #555; margin-top: 10px; font-weight: bold;'>🙏 धन्यवाद ! पुन्हा भेट द्या! | Designed by Balaji Cyber Point</p>", unsafe_allow_html=True)
 with col_foot2: show_admin = st.checkbox("⚙️ Settings", value=False, key="admin_check_box")
@@ -190,19 +167,65 @@ if show_admin:
     secret_pass = st.text_input("🔑 ओनर पासवर्ड प्रविष्ट करा:", type="password", key="mkt_pass")
     if secret_pass == st.session_state.owner_password:
         st.success("🔓 Control पॅनेल यशस्वीरित्या अनलॉक झाले!")
+        
         new_secure_password = st.text_input("🛡️ | नवीन सुरक्षित पासवर्ड टाईप करा:", type="password")
         if st.button("💾 नवीन पासवर्ड कायमचा सेव्ह करा"):
             if new_secure_password.strip() != "":
                 st.session_state.owner_password = new_secure_password
                 st.success("✅ पासवर्ड बदलला!")
                 st.rerun()
+        
         st.write("---")
+        # 🎯 ५-५ स्वतंत्र फोटो अपलोड करण्यासाठीचा मास्टर फॉर्म 🎯
         with st.form("master_ads_form"):
+            st.markdown("#### 📁 विभाग १: नोकर भरती आणि शैक्षणिक (Ad 1)")
             t1 = st.text_input("मुख्य नोटीस ओळ १:", value=st.session_state.ad1_main_text)
             f1_1 = st.file_uploader("फोटो १ (Ad 1):", type=["jpg", "png", "jpeg"], key="fu_1_1")
+            f1_2 = st.file_uploader("फोटो २ (Ad 1):", type=["jpg", "png", "jpeg"], key="fu_1_2")
+            f1_3 = st.file_uploader("फोटो ३ (Ad 1):", type=["jpg", "png", "jpeg"], key="fu_1_3")
+            f1_4 = st.file_uploader("फोटो ४ (Ad 1):", type=["jpg", "png", "jpeg"], key="fu_1_4")
+            f1_5 = st.file_uploader("फोटो ५ (Ad 1):", type=["jpg", "png", "jpeg"], key="fu_1_5")
+            
+            st.write("---")
+            st.markdown("#### 📁 विभाग २: हॉल तिकीट (Ad 2)")
+            t2 = st.text_input("मुख्य नोटीस ओळ २:", value=st.session_state.ad2_main_text)
+            f2_1 = st.file_uploader("फोटो १ (Ad 2):", type=["jpg", "png", "jpeg"], key="fu_2_1")
+            f2_2 = st.file_uploader("फोटो २ (Ad 2):", type=["jpg", "png", "jpeg"], key="fu_2_2")
+            f2_3 = st.file_uploader("फोटो ३ (Ad 2):", type=["jpg", "png", "jpeg"], key="fu_2_3")
+            f2_4 = st.file_uploader("फोटो ४ (Ad 2):", type=["jpg", "png", "jpeg"], key="fu_2_4")
+            f2_5 = st.file_uploader("फोटो ५ (Ad 2):", type=["jpg", "png", "jpeg"], key="fu_2_5")
+            
+            st.write("---")
+            st.markdown("#### 📁 विभाग ३: विशेष सेवा ऑफर्स (Ad 3)")
+            t3 = st.text_input("मुख्य नोटीस ओळ ३:", value=st.session_state.ad3_main_text)
+            f3_1 = st.file_uploader("फोटो १ (Ad 3):", type=["jpg", "png", "jpeg"], key="fu_3_1")
+            f3_2 = st.file_uploader("फोटो २ (Ad 3):", type=["jpg", "png", "jpeg"], key="fu_3_2")
+            f3_3 = st.file_uploader("फोटो ३ (Ad 3):", type=["jpg", "png", "jpeg"], key="fu_3_3")
+            f3_4 = st.file_uploader("फोटो ४ (Ad 3):", type=["jpg", "png", "jpeg"], key="fu_3_4")
+            f3_5 = st.file_uploader("फोटो ५ (Ad 3):", type=["jpg", "png", "jpeg"], key="fu_3_5")
+            
             submit_all = st.form_submit_button("🚀 सर्व जाहिराती आणि फोटो एकत्र लाईव्ह करा", use_container_width=True)
             if submit_all:
                 st.session_state.ad1_main_text = t1
                 if f1_1: st.session_state.ad1_img_1 = Image.open(f1_1)
-                st.success("✅ अपडेट झाले!")
+                if f1_2: st.session_state.ad1_img_2 = Image.open(f1_2)
+                if f1_3: st.session_state.ad1_img_3 = Image.open(f1_3)
+                if f1_4: st.session_state.ad1_img_4 = Image.open(f1_4)
+                if f1_5: st.session_state.ad1_img_5 = Image.open(f1_5)
+                
+                st.session_state.ad2_main_text = t2
+                if f2_1: st.session_state.ad2_img_1 = Image.open(f2_1)
+                if f2_2: st.session_state.ad2_img_2 = Image.open(f2_2)
+                if f2_3: st.session_state.ad2_img_3 = Image.open(f2_3)
+                if f2_4: st.session_state.ad2_img_4 = Image.open(f2_4)
+                if f2_5: st.session_state.ad2_img_5 = Image.open(f2_5)
+                
+                st.session_state.ad3_main_text = t3
+                if f3_1: st.session_state.ad3_img_1 = Image.open(f3_1)
+                if f3_2: st.session_state.ad3_img_2 = Image.open(f3_2)
+                if f3_3: st.session_state.ad3_img_3 = Image.open(f3_3)
+                if f3_4: st.session_state.ad3_img_4 = Image.open(f3_4)
+                if f3_5: st.session_state.ad3_img_5 = Image.open(f3_5)
+                
+                st.success("✅ सर्व जाहिराती आणि फोटो यशस्वीरित्या अपडेट झाले!")
                 st.rerun()
