@@ -40,12 +40,12 @@ for i in range(1, 4):
         state_key = f"ad{i}_img_{j}"
         if state_key not in st.session_state: st.session_state[state_key] = None
 
-if "ad1_main_text" not in st.session_state: st.session_state.ad1_main_text = "🔥 **नोकर भरती विशेष:** सर्व प्रकारचे ऑनलाईन जॉब फॉर्म्स, रेल्वे, पोलीस आणि बँक भरतीचे अर्ज अचूक भरून मिळतील."
+if "ad1_main_text" not in st.session_state: st.session_state.ad1_main_text = "🔥 **नोकर भरती व शैक्षणिक विशेष:** सर्व प्रकारचे ऑनलाईन जॉब फॉर्म्स, रेल्वे, पोलीस भरती आणि शाळा-कॉलेजचे ऑनलाईन प्रवेश अर्ज अचूक भरून मिळतील."
 if "ad2_main_text" not in st.session_state: st.session_state.ad2_main_text = "📄 **हॉल तिकीट व प्रवेशपत्र अपडेट:** विविध चालू परीक्षांचे प्रवेशपत्र डाऊनलोड करून मिळतील."
 if "ad3_main_text" not in st.session_state: st.session_state.ad3_main_text = "✈️ **विशेष प्रिंटिंग आणि बुकिंग सेवा:** फ्लाईट तिकीट बुकिंग, कलर झेरॉक्स आणि स्कॅनिंग जलद सेवा."
 
 # ==========================================
-# 📢 २. तुमचा आवडता मूळ जुना रॉयल ब्लू बॅनर (पूर्ववत केला)
+# 📢 २. मुख्य जुना रॉयल ब्लू बॅनर
 # ==========================================
 st.markdown("""
 <div style="background: linear-gradient(135deg, #002f6c 0%, #0056b3 100%); padding: 35px; border-radius: 12px; text-align: center; color: white; border: 3px solid #d4af37; box-shadow: 0px 4px 15px rgba(0,0,0,0.3); margin-bottom: 25px;">
@@ -55,7 +55,7 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-# 🌟 ३ कडक आणि आकर्षक टॅब्स (Services अपडेटसह) 🌟
+# 🌟 ३ मुख्य टॅब्स 🌟
 main_tab1, main_tab2, main_tab3 = st.tabs([
     "🔥 महाभरती व लाईव्ह ऑफर्स (Live Updates)", 
     "🏛️ डिजिटल ई-सेवा केंद्र (Services)", 
@@ -63,11 +63,13 @@ main_tab1, main_tab2, main_tab3 = st.tabs([
 ])
 
 # ------------------------------------------
-# टॅब १: महाभरती व लाईव्ह ऑफर्स
+# टॅब १: महाभरती व लाईव्ह ऑफर्स (सब-टॅब नाव बदलले)
 # ------------------------------------------
 with main_tab1:
     st.markdown("### 📢 चालू घडामोडी आणि नवीन जाहिराती (फोटोवर क्लिक करून मोठे करा)")
-    ad_tab1, ad_tab2, ad_tab3 = st.tabs(["🔥 नोकर भरती (Ad 1)", "📄 हॉल तिकीट (Ad 2)", "✨ विशेष सेवा ऑफर्स (Ad 3)"])
+    
+    # 🎯 तुमच्या सूचनेनुसार इथे "🔥 नोकर भरती आणि शैक्षणिक (Ad 1)" असे कडक अपडेट केले आहे
+    ad_tab1, ad_tab2, ad_tab3 = st.tabs(["🔥 नोकर भरती आणि शैक्षणिक (Ad 1)", "📄 हॉल तिकीट (Ad 2)", "✨ विशेष सेवा ऑफर्स (Ad 3)"])
 
     def display_advertisement_gallery(tab_index, main_text):
         st.info(main_text)
@@ -93,7 +95,7 @@ with main_tab1:
     with ad_tab3: display_advertisement_gallery(3, st.session_state.ad3_main_text)
 
 # ------------------------------------------
-# टॅब २: डिजिटल ई-सेवा केंद्र (आमच्या सेवा)
+# टॅब २: डिजिटल ई-सेवा केंद्र
 # ------------------------------------------
 with main_tab2:
     st.markdown("<h3 style='color: #002f6c; margin-bottom: 20px;'>🌟 आमच्याकडील प्रमुख सेवा (Center Offerings)</h3>", unsafe_allow_html=True)
@@ -124,12 +126,12 @@ with main_tab2:
         </div>
         <div class="service-card" style="border-left-color: #6f42c1;">
             <div class="service-title">👮 पोलीस व्हेरिफिकेशन (Police Verification)</div>
-            <div class="service-desc">नोकरी, चारित्र्य प्रमाणपत्र किंवा पासपोर्टसाठी लागणारे अधिकृत ऑनलाईन पोलीस व्हेरिफिकेशन अर्ज सुविधा.</div>
+            <div class="service-desc">नोकरी, चार चरित्र प्रमाणपत्र किंवा पासपोर्टसाठी लागणारे अधिकृत ऑनलाईन पोलीस व्हेरिफिकेशन अर्ज सुविधा.</div>
         </div>
         """, unsafe_allow_html=True)
 
     with col_grid2:
-        st.markdown("<h4 style='color: #0056b3; border-bottom: 2px solid #d4af37; padding-bottom: 5px;'>🖨️ | स्पेशल प्रिंटिंग, झेरॉक्स आणि TRADING बुकिंग</h4>", unsafe_allow_html=True)
+        st.markdown("<h4 style='color: #0056b3; border-bottom: 2px solid #d4af37; padding-bottom: 5px;'>🖨️ | स्पेशल प्रिंटिंग, झेरॉक्स आणि ट्रॅव्हल बुकिंग</h4>", unsafe_allow_html=True)
         st.markdown("""
         <div class="service-card" style="border-left-color: #20c997;">
             <div class="service-title">💻 | सर्व प्रकारचे ऑनलाईन जॉब फॉर्म्स</div>
