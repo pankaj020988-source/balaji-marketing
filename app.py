@@ -4,7 +4,7 @@ import io
 import os
 
 # ==========================================
-# 🌐 १. मुख्य पेज कॉन्फिगरेशन आणि कडक टॅब डिझाईन CSS
+# 🌐 १. मुख्य पेज कॉन्फिगरेशन आणि थीम CSS
 # ==========================================
 st.set_page_config(page_title="बालाजी सायबर पॉईंट - अधिकृत पोर्टल", page_icon="💻", layout="wide")
 
@@ -33,7 +33,7 @@ st.markdown("""
         [data-testid="stSidebar"] { display: none !important; }
         [data-testid="collapsedControl"] { display: none !important; }
         
-        /* 🎨 🎯 टॅब्स पूर्णपणे आकर्षक, मोठे आणि रंगीत करणे */
+        /* 🎨 टॅब्स पूर्णपणे आकर्षक, मोठे आणि रंगीत करणे */
         div.stTabs [data-baseweb="tab-list"] {
             display: flex !important;
             justify-content: center !important;
@@ -45,7 +45,6 @@ st.markdown("""
             margin-bottom: 20px !important;
         }
         
-        /* प्रत्येक टॅब बटनचा लुक कडक करणे */
         div.stTabs [data-baseweb="tab"] {
             font-size: 18px !important;
             font-weight: bold !important;
@@ -58,7 +57,6 @@ st.markdown("""
             box-shadow: 0px 2px 4px rgba(0,0,0,0.04) !important;
         }
         
-        /* माऊस नेल्यावर होणारा बदल */
         div.stTabs [data-baseweb="tab"]:hover {
             color: #0056b3 !important;
             background-color: #e8f2ff !important;
@@ -66,7 +64,6 @@ st.markdown("""
             transform: translateY(-2px) !important;
         }
         
-        /* 🏆 जो टॅब सिलेक्ट (Active) असेल त्याचा व्हीआयपी लुक */
         div.stTabs [aria-selected="true"] {
             color: #ffffff !important;
             background: linear-gradient(135deg, #002f6c 0%, #0056b3 100%) !important;
@@ -103,7 +100,6 @@ if not os.path.exists(IMAGE_DIR):
 
 st.session_state.owner_password = "Pankaj@0209"
 
-# नोटीस टेक्स्ट वाचणे/लिहिणे
 def get_txt(key, default):
     path = os.path.join(IMAGE_DIR, f"{key}.txt")
     if os.path.exists(path):
@@ -129,9 +125,8 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-# 🌟 ३ मुख्य आकर्षक मोठे टॅब्स 🌟
 main_tab1, main_tab2, main_tab3 = st.tabs([
-    "🔥 महाभरती व लाईव्ह ऑफर्स (Live Updates)", 
+    "🔥 महाभरती व लाईव्ह升offers (Live Updates)", 
     "🏛️ डिजिटल ई-सेवा केंद्र (Services)", 
     "⚡ मोफत मोबाईल ऑटो-प्रिंट (Instant Print)"
 ])
@@ -141,8 +136,6 @@ main_tab1, main_tab2, main_tab3 = st.tabs([
 # ------------------------------------------
 with main_tab1:
     st.markdown("<h3 style='color: #002f6c; margin-top:10px;'>📢 चालू घडामोडी आणि नवीन जाहिराती (🔒 सुरक्षेसाठी डाऊनलोड/स्क्रीनशॉट बंद)</h3>", unsafe_allow_html=True)
-    
-    # 🌟 आतील सब-टॅब्स देखील सुंदर आणि मोठ्या अक्षरात दिसतील
     ad_tab1, ad_tab2, ad_tab3 = st.tabs(["🔥 नोकर भरती आणि शैक्षणिक (Ad 1)", "📄 हॉल तिकीट (Ad 2)", "✨ विशेष सेवा ऑफर्स (Ad 3)"])
 
     def display_advertisement_gallery(tab_index, main_text):
@@ -167,17 +160,77 @@ with main_tab1:
     with ad_tab3: display_advertisement_gallery(3, ad3_text)
 
 # ------------------------------------------
-# टॅब २: डिजिटल ई-सेवा केंद्र
+# 🏛️ टॅब २: डिजिटल ई-सेवा केंद्र (येथे सर्व सेवा पूर्ववत केल्या आहेत)
 # ------------------------------------------
 with main_tab2:
     st.markdown("<h3 style='color: #002f6c; margin-bottom: 20px;'>🌟 आमच्याकडील प्रमुख सेवा (Center Offerings)</h3>", unsafe_allow_html=True)
     col_grid1, col_grid2 = st.columns(2)
+    
     with col_grid1:
         st.markdown("<h4 style='color: #0056b3; border-bottom: 2px solid #d4af37; padding-bottom: 5px;'>🏛️ महा-ई-सेवा केंद्र व शासकीय कामे</h4>", unsafe_allow_html=True)
-        st.markdown('<div class="service-card"><div class="service-title">🏛️ महा-ई-सेवा केंद्र कामे</div><div class="service-desc">सर्व प्रकारचे शासकीय दाखले, अधिकृत प्रपत्रे आणि सरकारी योजनांचे ऑनलाईन अर्ज अचूकपणे भरून मिळतील.</div></div>', unsafe_allow_html=True)
+        st.markdown("""
+        <div class="service-card" style="border-left-color: #e5be3b;">
+            <div class="service-title">🏛️ महा-ई-सेवा केंद्र कामे</div>
+            <div class="service-desc">सर्व प्रकारचे शासकीय दाखले, अधिकृत प्रपत्रे आणि सरकारी योजनांचे ऑनलाईन अर्ज अचूकपणे भरून मिळतील.</div>
+        </div>
+        <div class="service-card" style="border-left-color: #002f6c;">
+            <div class="service-title">📄 डोमासिएल, उत्पन्न व जातीचे दाखले</div>
+            <div class="service-desc">तहसीलदार कचेरीचे अधिकृत रहिवासी दाखले, वार्षिक उत्पन्नाचे प्रमाणपत्र आणि डिजिटल जातीचे दाखले जलद सेवा.</div>
+        </div>
+        <div class="service-card" style="border-left-color: #28a745;">
+            <div class="service-title">💳 नवीन पॅन CARD / दुरुस्ती</div>
+            <div class="service-desc">नवीन पॅन कार्ड निकालना, हरवलेले पॅन कार्ड मिळवणे किंवा जुन्या पॅन कार्डमधील नाव, जन्मतारीख व फोटो दुरुस्ती.</div>
+        </div>
+        <div class="service-card" style="border-left-color: #dc3545;">
+            <div class="service-title">🗳️ मतदार कार्ड आणि आधार लिंक</div>
+            <div class="service-desc">नवीन मतदार यादीत नाव नोंदवणे, मतदार कार्ड (Voter ID) डिजिटल करणे आणि आधार कार्ड लिंक करण्याची कामे.</div>
+        </div>
+        <div class="service-card" style="border-left-color: #17a2b8;">
+            <div class="service-title">📜 गॅझेट गॅरंटी सुविधा (नाव/धर्म बदलणे)</div>
+            <div class="service-desc">शासकीय राजपत्रात (Gazette) अधिकृत नाव बदलणे, विवाहांतर नाव बदलणे किंवा कायदेशीर धर्म बदलण्याची संपूर्ण प्रक्रिया.</div>
+        </div>
+        <div class="service-card" style="border-left-color: #6f42c1;">
+            <div class="service-title">👮 पोलीस व्हेरिफिकेशन (Police Verification)</div>
+            <div class="service-desc">नोकरी, चारित्र्य प्रमाणपत्र किंवा पासपोर्टसाठी लागणारे अधिकृत ऑनलाईन पोलीस व्हेरिफिकेशन अर्ज सुविधा.</div>
+        </div>
+        <div class="service-card" style="border-left-color: #fd7e14;">
+            <div class="service-title">💡 लाईट बिल पेमेंट सुविधा</div>
+            <div class="service-desc">महावितरणचे घरगुती व व्यावसायिक वीज बिल त्वरित ऑनलाईन भरण्याची खात्रीशीर सोय.</div>
+        </div>
+        """, unsafe_allow_html=True)
+        
     with col_grid2:
-        st.markdown("<h4 style='color: #0056b3; border-bottom: 2px solid #d4af37; padding-bottom: 5px;'>🖨️ | Special Printing & Booking</h4>", unsafe_allow_html=True)
-        st.markdown('<div class="service-card"><div class="service-title">💻 | सर्व प्रकारचे ऑनलाईन जॉब फॉर्म्स</div><div class="service-desc">केंद्र व राज्य शासनाच्या सर्व मेगाभरती, पोलीस, आर्मी, रेल्वे व अर्ज १००% अचूक भरून मिळतील.</div></div>', unsafe_allow_html=True)
+        st.markdown("<h4 style='color: #0056b3; border-bottom: 2px solid #d4af37; padding-bottom: 5px;'>🖨️ | स्पेशल प्रिंटिंग, झेरॉक्स आणि ट्रॅव्हल बुकिंग</h4>", unsafe_allow_html=True)
+        st.markdown("""
+        <div class="service-card" style="border-left-color: #20c997;">
+            <div class="service-title">💻 सर्व प्रकारचे ऑनलाईन जॉब फॉर्म्स</div>
+            <div class="service-desc">केंद्र व राज्य शासनाच्या सर्व मेगाभरती, पोलीस, आर्मी, रेल्वे व अर्ज १००% अचूक भरून मिळतील.</div>
+        </div>
+        <div class="service-card" style="border-left-color: #007bff;">
+            <div class="service-title">✈️ फ्लाईट बुकिंग केंद्र (Flight Tickets)</div>
+            <div class="service-desc">विमान प्रवासाचे तिकिट बुकिंग, हॉटेल्स आणि प्रवासाचे झटपट व खात्रीशीर आरक्षण सोल्यूशन्स.</div>
+        </div>
+        <div class="service-card" style="border-left-color: #ffc107;">
+            <div class="service-title">📐 A3 | हाय-क्वालिटी प्रिंटिंग सेवा</div>
+            <div class="service-desc">मोठ्या आकाराचे दस्तऐवज, नकाशा, अधिकृत पत्रके आणि विशेष दस्तऐवजांची हाय-क्वालिटी डिजिटल प्रिंटिंग सुविधा.</div>
+        </div>
+        <div class="service-card" style="border-left-color: #343a40;">
+            <div class="service-title">🎨 कलर झेरॉक्स (Xerox) व स्कॅनिंग</div>
+            <div class="service-desc">कागदपत्रांची कडक लेझर कलर झेरॉक्स आणि स्कॅनिंग सेवा.</div>
+        </div>
+        <div class="service-card" style="border-left-color: #6c757d;">
+            <div class="service-title">🔒 A3 आणि A4 कडक लॅमिनेशन</div>
+            <div class="service-desc">तुमची महत्त्वाची प्रमाणपत्रे सुरक्षित ठेवण्यासाठी कडक वॉटरप्रूफ लॅमिनेशन.</div>
+        </div>
+        <div class="service-card" style="border-left-color: #1a1a1a;">
+            <div class="service-title">📸 पासपोर्ट साईझ फोटो</div>
+            <div class="service-desc">शासकीय फॉर्म्स आणि ओळखपत्रासाठी लागणारे उच्च दर्जाचे पासपोर्ट फोटो त्वरित मिळतील.</div>
+        </div>
+        <div class="service-card" style="border-left-color: #b2bec3;">
+            <div class="service-title">🚗 पासपोर्ट आणि ड्रायव्हिंग लायसन्स अर्ज</div>
+            <div class="service-desc">नवीन पासपोर्ट ऑनलाईन अर्ज, नूतनीकरण आणि आरटीओ ड्रायव्हिंग लायसन्सचे सर्व फॉर्म्स.</div>
+        </div>
+        """, unsafe_allow_html=True)
 
 # ------------------------------------------
 # टॅब ३: मोफत मोबाईल ऑटो-प्रिंट
