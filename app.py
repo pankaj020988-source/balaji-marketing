@@ -4,7 +4,7 @@ import io
 import os
 
 # ==========================================
-# 🌐 १. मुख्य पेज कॉन्फिगरेशन आणि कडक सिक्युरिटी CSS/JS
+# 🌐 १. मुख्य पेज कॉन्फिगरेशन आणि कडक टॅब डिझाईन CSS
 # ==========================================
 st.set_page_config(page_title="बालाजी सायबर पॉईंट - अधिकृत पोर्टल", page_icon="💻", layout="wide")
 
@@ -32,7 +32,47 @@ st.markdown("""
         }
         [data-testid="stSidebar"] { display: none !important; }
         [data-testid="collapsedControl"] { display: none !important; }
-        div.stTabs [data-baseweb="tab-list"] { display: flex !important; justify-content: center !important; }
+        
+        /* 🎨 🎯 टॅब्स पूर्णपणे आकर्षक, मोठे आणि रंगीत करणे */
+        div.stTabs [data-baseweb="tab-list"] {
+            display: flex !important;
+            justify-content: center !important;
+            gap: 15px !important;
+            background-color: #f1f3f5 !important;
+            padding: 10px !important;
+            border-radius: 12px !important;
+            box-shadow: inset 0px 2px 5px rgba(0,0,0,0.05) !important;
+            margin-bottom: 20px !important;
+        }
+        
+        /* प्रत्येक टॅब बटनचा लुक कडक करणे */
+        div.stTabs [data-baseweb="tab"] {
+            font-size: 18px !important;
+            font-weight: bold !important;
+            color: #495057 !important;
+            background-color: #ffffff !important;
+            padding: 12px 24px !important;
+            border-radius: 8px !important;
+            border: 1px solid #dee2e6 !important;
+            transition: all 0.3s ease !important;
+            box-shadow: 0px 2px 4px rgba(0,0,0,0.04) !important;
+        }
+        
+        /* माऊस नेल्यावर होणारा बदल */
+        div.stTabs [data-baseweb="tab"]:hover {
+            color: #0056b3 !important;
+            background-color: #e8f2ff !important;
+            border-color: #b8daff !important;
+            transform: translateY(-2px) !important;
+        }
+        
+        /* 🏆 जो टॅब सिलेक्ट (Active) असेल त्याचा व्हीआयपी लुक */
+        div.stTabs [aria-selected="true"] {
+            color: #ffffff !important;
+            background: linear-gradient(135deg, #002f6c 0%, #0056b3 100%) !important;
+            border-color: #002f6c !important;
+            box-shadow: 0px 4px 10px rgba(0, 47, 108, 0.25) !important;
+        }
         
         .zoom-effect img { transition: transform .2s; pointer-events: none !important; }
         .zoom-effect img:hover { transform: scale(1.08); box-shadow: 0px 4px 15px rgba(0,0,0,0.3); }
@@ -61,8 +101,6 @@ IMAGE_DIR = "live_images"
 if not os.path.exists(IMAGE_DIR):
     os.makedirs(IMAGE_DIR)
 
-# 🔐 🎯 पंकजजी, तुमचा मास्टर पासवर्ड खालील कोट्सच्या मध्ये लिहा! 
-# (उदा. "Pankaj@0209" किंवा जो तुम्हाला ठेवायचा आहे तो अचूक टाईप करा)
 st.session_state.owner_password = "Pankaj@0209"
 
 # नोटीस टेक्स्ट वाचणे/लिहिणे
@@ -76,7 +114,7 @@ def save_txt(key, val):
     path = os.path.join(IMAGE_DIR, f"{key}.txt")
     with open(path, "w", encoding="utf-8") as f: f.write(val)
 
-ad1_text = get_txt("ad1_text", "🔥 **नोकर भरती व शैक्षणिक विशेष:** सर्व प्रकारचे ऑनलाईन जॉब फॉर्म्स, रेल्वे, पोलीस भरती आणि शाळा-कॉलेजचे ऑनलाईन प्रवेश अर्ज अर्ज अचूक भरून मिळतील.")
+ad1_text = get_txt("ad1_text", "🔥 **नोकर भरती व शैक्षणिक विशेष:** सर्व प्रकारचे ऑनलाईन जॉब फॉर्म्स, रेल्वे, पोलीस भरती आणि शाळा-कॉलेजचे ऑनलाईन प्रवेश अर्ज अचूक भरून मिळतील.")
 ad2_text = get_txt("ad2_text", "📄 **हॉल तिकीट व प्रवेशपत्र अपडेट:** विविध चालू परीक्षांचे प्रवेशपत्र डाऊनलोड करून मिळतील.")
 ad3_text = get_txt("ad3_text", "✈️ **विशेष प्रिंटिंग आणि बुकिंग सेवा:** फ्लाईट तिकीट बुकिंग, color झेरॉक्स आणि स्कॅनिंग जलद सेवा.")
 
@@ -91,6 +129,7 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
+# 🌟 ३ मुख्य आकर्षक मोठे टॅब्स 🌟
 main_tab1, main_tab2, main_tab3 = st.tabs([
     "🔥 महाभरती व लाईव्ह ऑफर्स (Live Updates)", 
     "🏛️ डिजिटल ई-सेवा केंद्र (Services)", 
@@ -101,11 +140,13 @@ main_tab1, main_tab2, main_tab3 = st.tabs([
 # टॅब १: महाभरती व लाईव्ह ऑफर्स
 # ------------------------------------------
 with main_tab1:
-    st.markdown("### 📢 चालू घडामोडी आणि नवीन जाहिराती (🔒 सुरक्षेसाठी डाऊनलोड/स्क्रीनशॉट बंद केला आहे)")
+    st.markdown("<h3 style='color: #002f6c; margin-top:10px;'>📢 चालू घडामोडी आणि नवीन जाहिराती (🔒 सुरक्षेसाठी डाऊनलोड/स्क्रीनशॉट बंद)</h3>", unsafe_allow_html=True)
+    
+    # 🌟 आतील सब-टॅब्स देखील सुंदर आणि मोठ्या अक्षरात दिसतील
     ad_tab1, ad_tab2, ad_tab3 = st.tabs(["🔥 नोकर भरती आणि शैक्षणिक (Ad 1)", "📄 हॉल तिकीट (Ad 2)", "✨ विशेष सेवा ऑफर्स (Ad 3)"])
 
     def display_advertisement_gallery(tab_index, main_text):
-        st.info(main_text)
+        st.markdown(f"<div style='background-color:#e8f2ff; padding:15px; border-radius:8px; border-left:5px solid #0056b3; font-size:16px; margin-bottom:20px; color:#002f6c;'>{main_text}</div>", unsafe_allow_html=True)
         cols = st.columns(5)
         has_any_image = False
         for img_idx in range(1, 6):
@@ -135,7 +176,7 @@ with main_tab2:
         st.markdown("<h4 style='color: #0056b3; border-bottom: 2px solid #d4af37; padding-bottom: 5px;'>🏛️ महा-ई-सेवा केंद्र व शासकीय कामे</h4>", unsafe_allow_html=True)
         st.markdown('<div class="service-card"><div class="service-title">🏛️ महा-ई-सेवा केंद्र कामे</div><div class="service-desc">सर्व प्रकारचे शासकीय दाखले, अधिकृत प्रपत्रे आणि सरकारी योजनांचे ऑनलाईन अर्ज अचूकपणे भरून मिळतील.</div></div>', unsafe_allow_html=True)
     with col_grid2:
-        st.markdown("<h4 style='color: #0056b3; border-bottom: 2px solid #d4af37; padding-bottom: 5px;'>🖨️ | स्पेशल प्रिंटिंग, झेरॉक्स आणि ट्रॅव्हल बुकिंग</h4>", unsafe_allow_html=True)
+        st.markdown("<h4 style='color: #0056b3; border-bottom: 2px solid #d4af37; padding-bottom: 5px;'>🖨️ | Special Printing & Booking</h4>", unsafe_allow_html=True)
         st.markdown('<div class="service-card"><div class="service-title">💻 | सर्व प्रकारचे ऑनलाईन जॉब फॉर्म्स</div><div class="service-desc">केंद्र व राज्य शासनाच्या सर्व मेगाभरती, पोलीस, आर्मी, रेल्वे व अर्ज १००% अचूक भरून मिळतील.</div></div>', unsafe_allow_html=True)
 
 # ------------------------------------------
