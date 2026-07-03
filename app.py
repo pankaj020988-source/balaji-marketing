@@ -56,14 +56,16 @@ st.markdown("""
     </script>
 """, unsafe_allow_html=True)
 
-# 📁 फोटो साठवण्यासाठी कायमस्वरूपी फोल्डर तयार करणे
+# 📁 फोटो साठवण्यासाठी कायमस्वरूपी फोल्डर
 IMAGE_DIR = "live_images"
 if not os.path.exists(IMAGE_DIR):
     os.makedirs(IMAGE_DIR)
 
-if "owner_password" not in st.session_state: st.session_state.owner_password = "Balaji@123"
+# 🔐 🎯 पंकजजी, तुमचा मास्टर पासवर्ड खालील कोट्सच्या मध्ये लिहा! 
+# (उदा. "Pankaj@0209" किंवा जो तुम्हाला ठेवायचा आहे तो अचूक टाईप करा)
+st.session_state.owner_password = "Pankaj@0209"
 
-# नोटीस टेक्स्ट फाईल मधून वाचणे/लिहिणे जेणेकरून ते रीस्टार्ट झाल्यावर पुसणार नाही
+# नोटीस टेक्स्ट वाचणे/लिहिणे
 def get_txt(key, default):
     path = os.path.join(IMAGE_DIR, f"{key}.txt")
     if os.path.exists(path):
@@ -74,7 +76,7 @@ def save_txt(key, val):
     path = os.path.join(IMAGE_DIR, f"{key}.txt")
     with open(path, "w", encoding="utf-8") as f: f.write(val)
 
-ad1_text = get_txt("ad1_text", "🔥 **नोकर भरती व शैक्षणिक विशेष:** सर्व प्रकारचे ऑनलाईन जॉब फॉर्म्स, रेल्वे, पोलीस भरती आणि शाळा-कॉलेजचे ऑनलाईन प्रवेश अर्ज अचूक भरून मिळतील.")
+ad1_text = get_txt("ad1_text", "🔥 **नोकर भरती व शैक्षणिक विशेष:** सर्व प्रकारचे ऑनलाईन जॉब फॉर्म्स, रेल्वे, पोलीस भरती आणि शाळा-कॉलेजचे ऑनलाईन प्रवेश अर्ज अर्ज अचूक भरून मिळतील.")
 ad2_text = get_txt("ad2_text", "📄 **हॉल तिकीट व प्रवेशपत्र अपडेट:** विविध चालू परीक्षांचे प्रवेशपत्र डाऊनलोड करून मिळतील.")
 ad3_text = get_txt("ad3_text", "✈️ **विशेष प्रिंटिंग आणि बुकिंग सेवा:** फ्लाईट तिकीट बुकिंग, color झेरॉक्स आणि स्कॅनिंग जलद सेवा.")
 
@@ -154,7 +156,7 @@ st.markdown("""<div style='background-color: #002f6c; color: white; padding: 15p
 st.write("---")
 
 # ==========================================
-# ⚙️ ४. सायबर ओनर CONTROL PANEL (डेटा सेव्हिंग फिक्स)
+# ⚙️ ४. सायबर ओनर CONTROL PANEL
 # ==========================================
 col_foot1, col_foot2 = st.columns([5, 1])
 with col_foot1: st.markdown("<p style='font-size: 13px; color: #555; margin-top: 10px; font-weight: bold;'>🙏 धन्यवाद ! पुन्हा भेट द्या! | Designed by Balaji Cyber Point</p>", unsafe_allow_html=True)
@@ -178,7 +180,6 @@ if show_admin:
             submit_all = st.form_submit_button("🚀 सर्व जाहिराती आणि फोटो एकत्र लाईव्ह करा", use_container_width=True)
             if submit_all:
                 save_txt("ad1_text", t1)
-                # फाईल्स परमनंटली डिस्कवर सेव्ह करणे
                 for idx, f in enumerate([f1_1, f1_2, f1_3, f1_4, f1_5], start=1):
                     if f is not None:
                         img = Image.open(f)
