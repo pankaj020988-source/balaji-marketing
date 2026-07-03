@@ -3,7 +3,7 @@ from PIL import Image
 import io
 
 # ==========================================
-# 🌐 १. मुख्य पेज कॉन्फिगरेशन आणि थीम सेटिंग्ज
+# 🌐 १. मुख्य पेज कॉन्फिगरेशन आणि १००% झूम सेटिंग्ज
 # ==========================================
 st.set_page_config(page_title="बालाजी सायबर पॉईंट - अधिकृत पोर्टल", page_icon="💻", layout="wide")
 
@@ -50,22 +50,23 @@ for i in range(1, 4):
             st.session_state[state_key] = None
 
 # मूळ टेक्स्ट नोटीस
-if "ad1_main_text" not in st.session_state: st.session_state.ad1_main_text = "🔥 **नोकर भरती विशेष:** रेल्वे, पोलीस आणि बँक भरतीचे अर्ज सुरू आहेत."
-if "ad2_main_text" not in st.session_state: st.session_state.ad2_main_text = "📄 **हॉल तिकीट अपडेट:** विविध परीक्षांचे प्रवेशपत्र डाऊनलोड करून मिळतील."
-if "ad3_main_text" not in st.session_state: st.session_state.ad3_main_text = "✨ **विशेष ट्रॅव्हल बुकिंग ऑफर्स:** हॉटेल्स आणि फ्लाईट्सवर आकर्षक डिस्काउंट!"
+if "ad1_main_text" not in st.session_state: st.session_state.ad1_main_text = "🔥 **नोकर भरती विशेष:** सर्व प्रकारचे ऑनलाईन जॉब फॉर्म्स, रेल्वे, पोलीस आणि बँक भरतीचे अर्ज अचूक भरून मिळतील."
+if "ad2_main_text" not in st.session_state: st.session_state.ad2_main_text = "📄 **हॉल तिकीट व प्रवेशपत्र अपडेट:** विविध चालू परीक्षांचे प्रवेशपत्र डाऊनलोड करून मिळतील."
+if "ad3_main_text" not in st.session_state: st.session_state.ad3_main_text = "✈️ **विशेष प्रिंटिंग आणि बुकिंग सेवा:** फ्लाईट तिकीट बुकिंग, कलर झेरॉक्स आणि स्कॅनिंग जलद सेवा."
 
 # ==========================================
-# 📢 ३. मुख्य डिजिटल होर्डिंग बॅनर
+# 📢 ३. मुख्य डिजिटल होर्डिंग बॅनर (HTML/CSS)
 # ==========================================
 st.markdown("""
 <div style="background: linear-gradient(135deg, #002f6c 0%, #0056b3 100%); padding: 35px; border-radius: 12px; text-align: center; color: white; border: 3px solid #d4af37; box-shadow: 0px 4px 15px rgba(0,0,0,0.3); margin-bottom: 25px;">
     <h1 style="color: #e5be3b; font-size: 44px; font-weight: bold; margin-bottom: 5px; font-family: 'Arial';">बालाजी सायबर पॉईंट (माणगाव)</h1>
-    <h3 style="font-size: 22px; font-weight: 500; margin-top: 0; opacity: 0.95;">तुमचे डिजिटल आणि ट्रॅव्हल सोल्यूशन पार्टनर!</h3>
+    <h3 style="font-size: 24px; font-weight: 500; margin-top: 0; opacity: 0.95;">डिजिटल क्रांती आणि शासकीय सेवा केंद्र</h3>
+    <p style="font-size: 18px; color: #d4af37; font-weight: bold; margin-top: 5px;">सर्व ऑनलाईन सेवा एकाच छताखाली! | ☑ अचूक काम ☑ जलद सेवा ☑ वाजवी दर</p>
     <hr style="border: 1px solid #d4af37; width: 50%; margin: 15px auto;">
     <div style="display: flex; justify-content: space-around; font-size: 18px; font-weight: bold; margin-top: 15px; flex-wrap: wrap;">
-        <div style="margin: 5px;">💻 ऑनलाईन फॉर्म्स</div>
-        <div style="margin: 5px;">📄 सरकारी योजना</div>
-        <div style="margin: 5px;">✈️ ट्रॅव्हल बुकिंग</div>
+        <div style="margin: 5px;">💻 महा-ई-सेवा केंद्र</div>
+        <div style="margin: 5px;">📝 सर्व ऑनलाईन फॉर्म्स</div>
+        <div style="margin: 5px;">✈️ फ्लाईट बुकिंग व फोटो</div>
     </div>
 </div>
 """, unsafe_allow_html=True)
@@ -75,7 +76,7 @@ st.markdown("""
 # ==========================================
 st.markdown("### 📢 चालू घडामोडी आणि नवीन जाहिराती (फोटोवर क्लिक करून मोठे करा)")
 
-ad_tab1, ad_tab2, ad_tab3 = st.tabs(["🔥 नोकर भरती (Ad 1)", "📄 हॉल तिकीट (Ad 2)", "✨ विशेष ऑफर्स (Ad 3)"])
+ad_tab1, ad_tab2, ad_tab3 = st.tabs(["🔥 नोकर भरती (Ad 1)", "📄 हॉल तिकीट (Ad 2)", "✨ विशेष सेवा ऑफर्स (Ad 3)"])
 
 # --- फंक्शन: ५ फोटो ग्रीडमध्ये सुंदर दाखवणे आणि झूम सुविधा देणे ---
 def display_advertisement_gallery(tab_index, main_text):
@@ -99,10 +100,10 @@ def display_advertisement_gallery(tab_index, main_text):
                 img_data.save(img_buffer, format="PNG")
                 st.download_button(label=f"🔍 सेपरेट झूम करा ({img_idx})", data=img_buffer.getvalue(), file_name=f"balaji_ad_{tab_index}_{img_idx}.png", mime="image/png", key=f"dl_{tab_index}_{img_idx}", use_container_width=True)
             else:
-                st.write(f"ℹ️ पत्रक {img_idx} रिकामे")
+                st.write(f"ℹ️ पत्रक {img_idx} खाली")
                 
     if not has_any_image:
-        st.warning("📌 या विभागात सध्या कोणतेही अधिकृत पत्रक अपलोड केलेले नाही. माहितीसाठी दुकानात संपर्क करा.")
+        st.warning("📌 या विभागात सध्या कोणतेही अधिकृत पत्रक अपलोड केलेले नाही. नवीन माहिती लवकरच अपडेट केली जाईल.")
 
 with ad_tab1:
     display_advertisement_gallery(1, st.session_state.ad1_main_text)
@@ -116,31 +117,41 @@ with ad_tab3:
 st.write("---")
 
 # ==========================================
-# 🌟 ५. दुकानात उपलब्ध असलेल्या सेवांची यादी
+# 🌟 ५. आमच्याकडील प्रमुख सेवा (तुमच्या अधिकृत फाईलनुसार अपडेटेड)
 # ==========================================
-st.markdown("### 🌟 आमच्या प्रमुख डिजिटल सेवा:")
+st.markdown("### 🌟 आमच्याकडील प्रमुख सेवा (Center Offerings):")
 col_serv1, col_serv2 = st.columns(2)
+
 with col_serv1:
     st.markdown("""
-    **💻 On-line फॉर्म्स आणि नोकरभरती सेवा:**
-    * केंद्र व राज्य शासनाच्या सर्व प्रकारच्या नोकरभरतीचे ऑनलाईन अर्ज भरणे.
-    * विविध स्पर्धा परीक्षांचे हॉल तिकीट (Admit Card) डाऊनलोड करणे.
-    
-    **✈️ ट्रॅव्हल आणि टूर बुकिंग सोल्यूशन्स:**
-    * देश-विदेशातील विमानाची तिकिटे (Flight Tickets) आणि हॉटेल्स झटपट बुक करणे.
-    * कौटुंबिक आणि ग्रुप सहलींसाठी विशेष मेकमायट्रिप (MakeMyTrip) टूर पॅकेजेस.
-    """)
-with col_serv2:
-    st.markdown("""
-    **📄 शासकीय योजना आणि दाखले:**
-    * घरकुल योजना, शबरी आवास योजना आणि इतर महत्त्वाच्या शासकीय योजनांचे अर्ज.
-    * उत्पन्न दाखला, रेशन कार्ड दुरुस्ती व नवीन रेशन कार्ड नोंदणी अर्ज.
-    
-    **💰 डिजिटल फोटो टूल्स:**
-    * पासपोर्ट साईझ फोटो तयार करणे.
-    * सरकारी फॉर्म्ससाठी फोटो आणि सही अचूक रीसाईझ करणे.
+    **🏛️ महा-ई-सेवा केंद्र व शासकीय कामे:**
+    * ☑ महा-ई-सेवा केंद्र कामे (सर्व दाखले व अर्ज)
+    * ☑ डोमासिएल, उत्पन्न व जातीचे दाखले
+    * ☑ नवीन पॅन कार्ड (Pan Card) काढणे / दुरुस्ती करणे
+    * ☑ मतदार कार्ड (Voter ID) आणि आधार कार्ड लिंक करणे कामे
+    * ☑ गॅझेट गॅरंटी सुविधा (अधिकृत नाव किंवा धर्म बदलणे)
+    * ☑ पोलीस व्हेरिफिकेशन (Police Verification) ऑनलाईन अर्ज
+    * ☑ पासपोर्ट आणि ड्रायव्हिंग लायसन्स नवीन अर्ज व कामे
+    * ☑ महावितरण लाईट बिल पेमेंट सुविधा (लाईट बिल भरणे केंद्र)
     """)
 
+with col_serv2:
+    st.markdown("""
+    **🖨️ स्पेशल प्रिंटिंग, झेरॉक्स आणि ट्रॅव्हल बुकिंग सेवा:**
+    * ☑ सर्व प्रकारचे ऑनलाईन जॉब फॉर्म्स व नोकरभरती अर्ज
+    * ☑ फ्लाईट बुकिंग केंद्र (Flight Tickets झटपट प्रवासाचे आरक्षण)
+    * ☑ A3 हाय-क्वालिटी प्रिंटिंग सेवा
+    * ☑ कलर झेरॉक्स (Xerox) आणि हाय-स्पीड दस्तऐवज स्कॅनिंग
+    * ☑ A3 आणि A4 साईझ कडक लॅमिनेशन सुविधा
+    * ☑ अर्ज व फॉर्म्ससाठी हाय-क्वालिटी पासपोर्ट साईझ फोटो
+    """)
+
+st.write("")
+st.markdown("""
+<div style='background-color: #154c8c; color: white; padding: 15px; border-radius: 8px; text-align: center; font-size: 16px; font-weight: bold; box-shadow: 0px 4px 10px rgba(0,0,0,0.15);'>
+    📍 पत्ताः बालाजी कॉम्प्लेक्स, माणगाव, रायगड, महाराष्ट्र | 📞 संपर्क: 8007365051 | 🟢 व्हॉट्सॲप: 8806789013
+</div>
+""", unsafe_allow_html=True)
 st.write("---")
 
 # ==========================================
@@ -149,13 +160,12 @@ st.write("---")
 col_foot1, col_foot2 = st.columns([5, 1])
 
 with col_foot1:
-    st.markdown("<p style='font-size: 11px; color: #aaa; margin-top: 10px;'>© 2026 Balaji Cyber Point. All Rights Reserved.</p>", unsafe_allow_html=True)
+    st.markdown("<p style='font-size: 12px; color: #888; margin-top: 10px;'>🙏 धन्यवाद ! पुन्हा भेट द्या! | Designed by Balaji Cyber Point, Mangaon</p>", unsafe_allow_html=True)
 
 with col_foot2:
-    # ⚙️ हा तो गुप्त ओनर सेटिंग पर्याय आहे!
     show_admin = st.checkbox("⚙️ Settings", value=False, key="admin_check_box")
 
-# ग्राहक चेकबॉक्सवर टिक करणार नाहीत, पण तुम्ही क्लिक करताच खाली पासवर्ड बॉक्स उघडेल
+# ओनर पॅनेल
 if show_admin:
     st.markdown("### ⚙️ सायबर ओनर कंट्रोल पॅनेल (🔐 Restricted Area)")
     secret_pass = st.text_input("🔑 ओनर पासवर्ड प्रविष्ट करा:", type="password", key="mkt_pass")
@@ -197,7 +207,7 @@ if show_admin:
             
             st.write("---")
             # विभाग ३
-            st.markdown("#### 📁 विभाग ३: विशेष ऑफर्स (Ad 3)")
+            st.markdown("#### 📁 विभाग ३: विशेष सेवा ऑफर्स (Ad 3)")
             t3 = st.text_input("मुख्य नोटीस ओळ ३:", value=st.session_state.ad3_main_text)
             f3_1 = st.file_uploader("फोटो १ (Ad 3):", type=["jpg", "png", "jpeg"], key="fu_3_1")
             f3_2 = st.file_uploader("फोटो २ (Ad 3):", type=["jpg", "png", "jpeg"], key="fu_3_2")
@@ -229,7 +239,7 @@ if show_admin:
                 if f3_4: st.session_state.ad3_img_4 = Image.open(f3_4)
                 if f3_5: st.session_state.ad3_img_5 = Image.open(f3_5)
                 
-                st.success("✅ सर्व १५ जाहिरातींचे फोटो सिस्टीम मेमरीत यशस्वीरित्या लाईव्ह झाले आहेत!")
+                st.success("✅ सर्व जाहिरातींचे फोटो सिस्टीम मेमरीत यशस्वीरित्या अपडेट झाले आहेत!")
                 st.rerun()
     elif secret_pass != "":
         st.error("❌ चुकीचा पासवर्ड!")
